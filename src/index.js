@@ -2,6 +2,7 @@
 
 import dotenv from "dotenv";
 import connectDB from "./db/index.js";
+import { app } from "./app.js";
 
 // Load .env from root directory
 dotenv.config(); // ✅ this is enough if .env is in root
