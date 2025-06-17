@@ -1,7 +1,7 @@
 import mongoose, {Schema} from "mongoose";
 import jwt from "jsonwebtoken";
-import bcrypt from "brcypt";
-import { use } from "react";
+import bcrypt from "bcrypt";
+// import { use } from "react";
 
 const userSchema = new Schema(
     {
@@ -62,7 +62,7 @@ const userSchema = new Schema(
 userSchema.pre("save",async function(next){   //yaha arrow function use nahi kar sakte kyuki .this use karna hai
     if(!this.isModified("password")) return next();
 
-    this.password = bcrypt.hash(this.password, 10) //hash method 2 chije leta hai, ek password aur dusri ki uspe kitne layers lagane hai security ke
+    this.password = await bcrypt.hash(this.password, 10) //hash method 2 chije leta hai, ek password aur dusri ki uspe kitne layers lagane hai security ke
     next()
 })
 
